@@ -1,5 +1,5 @@
 # Data
-1. Decompress raw data.
+1. Download raw data and decompress it into `data` folder.
 2. Run the following commands to convert the raw data to the specified format.
 ```shell
 python preprocess.py

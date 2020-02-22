@@ -4,10 +4,7 @@
 
 import json
 import re
-from nltk import data
 from nltk.tokenize import word_tokenize
-from nltk.tokenize import MWETokenizer
-data.path.append('/data6/htwang/resource/nltk_data')
 
 
 def search_entity(sentence):
