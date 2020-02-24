@@ -50,9 +50,6 @@ class Config(object):
                             help='dir to save output')
 
         # word embedding
-        # parser.add_argument('--embedding_path', type=str,
-        #                     default='./embedding/hlbl-embeddings-original.EMBEDDING_SIZE=50.txt',
-        #                     help='pre_trained word embedding')
         parser.add_argument('--embedding_path', type=str,
                             default='./embedding/hlbl-embeddings-scaled.EMBEDDING_SIZE=50.txt',
                             help='pre_trained word embedding')
@@ -69,7 +66,7 @@ class Config(object):
                             choices=[0, 1],
                             help='running mode: 1 for training; otherwise testing')
         parser.add_argument('--seed', type=int,
-                            default=1234,
+                            default=5782,
                             help='random seed')
         parser.add_argument('--cuda', type=int,
                             default=0,
@@ -83,10 +80,10 @@ class Config(object):
                             default='0.5',
                             help='the possiblity of dropout')
         parser.add_argument('--batch_size', type=int,
-                            default=64,
+                            default=128,
                             help='batch size')
         parser.add_argument('--lr', type=float,
-                            default=0.01,
+                            default=0.001,
                             help='learning rate')
         parser.add_argument('--max_len', type=int,
                             default=100,
@@ -104,6 +101,9 @@ class Config(object):
                             help='the number of filters in convolution')
         parser.add_argument('--window', type=int, default='3',
                             help='the size of window in convolution')
+
+        parser.add_argument('--L2_decay', type=float, default='1e-5',
+                            help='L2 weight decay')
 
         args = parser.parse_args()
         return args

@@ -13,11 +13,6 @@ from model import CNN
 from evaluate import Eval
 
 
-def change_lr(optimizer, new_lr):
-    for param_group in optimizer.param_groups:
-        param_group['lr'] = new_lr
-
-
 def print_result(predict_label, id2rel, start_idx=8001):
     with open('predicted_result.txt', 'w', encoding='utf-8') as fw:
         for i in range(0, predict_label.shape[0]):
@@ -26,9 +21,7 @@ def print_result(predict_label, id2rel, start_idx=8001):
 
 def train(model, criterion, loader, config):
     train_loader, dev_loader, _ = loader
-    # optimizer = optim.SGD(model.parameters(), lr=1.0)
-    optimizer = optim.Adam(model.parameters(), lr=0.005)
-    # optimizer = optim.Adadelta(model.parameters(), lr=1.0)
+    optimizer = optim.Adam(model.parameters(), lr=config.lr, weight_decay=config.L2_decay)
 
     print(model)
     print('traning model parameters:')
@@ -40,8 +33,6 @@ def train(model, criterion, loader, config):
 
     eval_tool = Eval(config)
     min_f1 = -float('inf')
-    current_lr = config.lr
-    f1_history = []
     for epoch in range(1, config.epoch+1):
         for step, (data, label) in enumerate(train_loader):
             model.train()
@@ -65,12 +56,6 @@ def train(model, criterion, loader, config):
             print('>>> save models!')
         else:
             print()
-
-        # lr schedule
-        # if len(f1_history) > 10 and f1 <= f1_history[-1]:
-        #     current_lr *= 0.9
-        #     change_lr(optimizer, current_lr)
-        # f1_history.append(f1)
 
 
 def test(model, criterion, loader, config):

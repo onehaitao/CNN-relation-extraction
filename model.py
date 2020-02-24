@@ -53,6 +53,7 @@ class CNN(nn.Module):
         )
         self.maxpool = nn.MaxPool2d((self.max_len, 1))
         self.tanh = nn.Tanh()
+        self.relu = nn.ReLU()
         self.dropout = nn.Dropout(0.3)
         self.linear = nn.Linear(
             in_features=self.filter_num,
@@ -66,14 +67,14 @@ class CNN(nn.Module):
         )
 
         # initialize weight
-        self.pos1_embedding.weight.data.uniform_(-1.0, 1.0)
-        self.pos2_embedding.weight.data.uniform_(-1.0, 1.0)
-
-        init.xavier_uniform_(self.linear.weight, gain=1)
-        self.linear.bias.data.fill_(0)
-
-        init.xavier_uniform_(self.dense.weight, gain=1)
-        self.dense.bias.data.fill_(0)
+        init.xavier_normal_(self.pos1_embedding.weight)
+        init.xavier_normal_(self.pos2_embedding.weight)
+        init.xavier_normal_(self.conv.weight)
+        init.constant_(self.conv.bias, 0.)
+        init.xavier_normal_(self.linear.weight)
+        init.constant_(self.linear.bias, 0.)
+        init.xavier_normal_(self.dense.weight)
+        init.constant_(self.dense.bias, 0.)
 
     def encoder_layer(self, token, pos1, pos2):
         word_emb = self.word_embedding(token)  # B*L*word_dim
@@ -105,10 +106,12 @@ class CNN(nn.Module):
         pos2 = data[:, 2, :].view(-1, self.max_len)
         mask = data[:, 3, :].view(-1, self.max_len)
         emb = self.encoder_layer(token, pos1, pos2)
+        emb = self.dropout(emb)
         conv = self.conv_layer(emb, mask)
+        conv = self.relu(conv)
         pool = self.single_maxpool_layer(conv)
         sentence_feature = self.linear(pool)
         sentence_feature = self.tanh(sentence_feature)
-        # sentence_feature = self.dropout(sentence_feature)
+        sentence_feature = self.dropout(sentence_feature)
         logits = self.dense(sentence_feature)
         return logits
