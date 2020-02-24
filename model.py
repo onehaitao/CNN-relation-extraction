@@ -53,7 +53,6 @@ class CNN(nn.Module):
         )
         self.maxpool = nn.MaxPool2d((self.max_len, 1))
         self.tanh = nn.Tanh()
-        self.relu = nn.ReLU()
         self.dropout = nn.Dropout(self.dropout_value)
         self.linear = nn.Linear(
             in_features=self.filter_num,

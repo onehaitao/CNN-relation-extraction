@@ -32,7 +32,6 @@ CNN(
   (conv): Conv2d(1, 200, kernel_size=(3, 60), stride=(1, 1), padding=(1, 0))
   (maxpool): MaxPool2d(kernel_size=(100, 1), stride=(100, 1), padding=0, dilation=1, ceil_mode=False)
   (tanh): Tanh()
-  (relu): ReLU()
   (dropout): Dropout(p=0.5, inplace=False)
   (linear): Linear(in_features=200, out_features=100, bias=True)
   (dense): Linear(in_features=100, out_features=19, bias=True)
@@ -50,7 +49,7 @@ dense.bias :  torch.Size([19])
 --------------------------------------
 start to train the model ...
 [001] train_loss: 2.446 | dev_loss: 2.449 | micro f1 on dev: 0.5220 >>> save models!
-[002] train_loss: 1.856 | dev_loss: 1.850 | micro f1 on dev: 0.4652 
+[002] train_loss: 1.856 | dev_loss: 1.850 | micro f1 on dev: 0.4652
 [003] train_loss: 1.403 | dev_loss: 1.426 | micro f1 on dev: 0.5612 >>> save models!
 [004] train_loss: 1.186 | dev_loss: 1.265 | micro f1 on dev: 0.6535 >>> save models!
 [005] train_loss: 0.976 | dev_loss: 1.131 | micro f1 on dev: 0.6994 >>> save models!
@@ -58,17 +57,17 @@ start to train the model ...
 [007] train_loss: 0.658 | dev_loss: 0.976 | micro f1 on dev: 0.7508 >>> save models!
 [008] train_loss: 0.571 | dev_loss: 0.972 | micro f1 on dev: 0.7557 >>> save models!
 [009] train_loss: 0.457 | dev_loss: 0.927 | micro f1 on dev: 0.7690 >>> save models!
-[010] train_loss: 0.364 | dev_loss: 0.905 | micro f1 on dev: 0.7666 
+[010] train_loss: 0.364 | dev_loss: 0.905 | micro f1 on dev: 0.7666
 [011] train_loss: 0.289 | dev_loss: 0.896 | micro f1 on dev: 0.7796 >>> save models!
 [012] train_loss: 0.234 | dev_loss: 0.912 | micro f1 on dev: 0.7846 >>> save models!
 [013] train_loss: 0.189 | dev_loss: 0.916 | micro f1 on dev: 0.7926 >>> save models!
-[014] train_loss: 0.151 | dev_loss: 0.924 | micro f1 on dev: 0.7857 
-[015] train_loss: 0.123 | dev_loss: 0.959 | micro f1 on dev: 0.7862 
-[016] train_loss: 0.097 | dev_loss: 0.980 | micro f1 on dev: 0.7779 
-[017] train_loss: 0.078 | dev_loss: 0.985 | micro f1 on dev: 0.7906 
-[018] train_loss: 0.064 | dev_loss: 1.025 | micro f1 on dev: 0.7840 
-[019] train_loss: 0.051 | dev_loss: 1.025 | micro f1 on dev: 0.7831 
-[020] train_loss: 0.042 | dev_loss: 1.066 | micro f1 on dev: 0.7876 
+[014] train_loss: 0.151 | dev_loss: 0.924 | micro f1 on dev: 0.7857
+[015] train_loss: 0.123 | dev_loss: 0.959 | micro f1 on dev: 0.7862
+[016] train_loss: 0.097 | dev_loss: 0.980 | micro f1 on dev: 0.7779
+[017] train_loss: 0.078 | dev_loss: 0.985 | micro f1 on dev: 0.7906
+[018] train_loss: 0.064 | dev_loss: 1.025 | micro f1 on dev: 0.7840
+[019] train_loss: 0.051 | dev_loss: 1.025 | micro f1 on dev: 0.7831
+[020] train_loss: 0.042 | dev_loss: 1.066 | micro f1 on dev: 0.7876
 --------------------------------------
 start test ...
 test_loss: 0.916 | micro f1 on test:  0.7926
