@@ -13,7 +13,6 @@ class CNN(nn.Module):
         super().__init__()
         self.word_vec = word_vec
         self.class_num = class_num
-        self.device = config.device
 
         # hyper parameters and others
         self.max_len = config.max_len
