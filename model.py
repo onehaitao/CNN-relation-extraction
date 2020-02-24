@@ -54,7 +54,7 @@ class CNN(nn.Module):
         self.maxpool = nn.MaxPool2d((self.max_len, 1))
         self.tanh = nn.Tanh()
         self.relu = nn.ReLU()
-        self.dropout = nn.Dropout(0.3)
+        self.dropout = nn.Dropout(self.dropout_value)
         self.linear = nn.Linear(
             in_features=self.filter_num,
             out_features=self.hidden_size,
@@ -108,7 +108,6 @@ class CNN(nn.Module):
         emb = self.encoder_layer(token, pos1, pos2)
         emb = self.dropout(emb)
         conv = self.conv_layer(emb, mask)
-        conv = self.relu(conv)
         pool = self.single_maxpool_layer(conv)
         sentence_feature = self.linear(pool)
         sentence_feature = self.tanh(sentence_feature)

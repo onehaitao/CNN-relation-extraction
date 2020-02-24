@@ -62,7 +62,7 @@ class Config(object):
                             default=None,
                             help='model name')
         parser.add_argument('--mode', type=int,
-                            default='1',
+                            default=1,
                             choices=[0, 1],
                             help='running mode: 1 for training; otherwise testing')
         parser.add_argument('--seed', type=int,
@@ -77,7 +77,7 @@ class Config(object):
 
         # hyper parameters
         parser.add_argument('--dropout', type=float,
-                            default='0.5',
+                            default=0.5,
                             help='the possiblity of dropout')
         parser.add_argument('--batch_size', type=int,
                             default=128,
@@ -88,21 +88,21 @@ class Config(object):
         parser.add_argument('--max_len', type=int,
                             default=100,
                             help='max length of sentence')
-        parser.add_argument('--pos_dis', type=int, default='50',
+        parser.add_argument('--pos_dis', type=int, default=50,
                             help='max distance of position embedding')
         parser.add_argument('--pos_dim', type=int,
                             default=5,
                             help='dimension of position embedding')
-        parser.add_argument('--hidden_size', type=int, default='100',
+        parser.add_argument('--hidden_size', type=int, default=100,
                             help='the size of linear layer between convolution and classification')
 
         # hyper parameters for cnn
-        parser.add_argument('--filter_num', type=int, default='200',
+        parser.add_argument('--filter_num', type=int, default=200,
                             help='the number of filters in convolution')
-        parser.add_argument('--window', type=int, default='3',
+        parser.add_argument('--window', type=int, default=3,
                             help='the size of window in convolution')
 
-        parser.add_argument('--L2_decay', type=float, default='1e-5',
+        parser.add_argument('--L2_decay', type=float, default=1e-5,
                             help='L2 weight decay')
 
         args = parser.parse_args()

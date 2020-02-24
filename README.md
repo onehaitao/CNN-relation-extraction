@@ -27,7 +27,7 @@ perl semeval2010_task8_scorer-v1.2.pl proposed_answer.txt predicted_result.txt >
 The result of my version and that in paper are present as follows:
 | paper | my version |
 | :------: | :------: |
-| 0.789 | 0.7889 |
+| 0.789 | 0.7926 |
 
 The training log can be seen in `train.log` and the official evaluation results is available in `result.txt`.
 
