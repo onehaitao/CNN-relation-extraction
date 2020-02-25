@@ -95,7 +95,7 @@ class CNN(nn.Module):
 
     def single_maxpool_layer(self, conv):
         pool = self.maxpool(conv)  # B*C*1*1
-        pool = pool.view(-1, self.filter_num)  # B*c
+        pool = pool.view(-1, self.filter_num)  # B*C
         return pool
 
     def forward(self, data):
