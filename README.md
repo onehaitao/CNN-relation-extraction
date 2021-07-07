@@ -1,4 +1,6 @@
 # CNN-relation-extraction
+[![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/relation-classification-via-convolutional/relation-extraction-on-semeval-2010-task-8)](https://paperswithcode.com/sota/relation-extraction-on-semeval-2010-task-8?p=relation-classification-via-convolutional)
+
 Implementation of [Relation Classification via Convolutional Deep Neural Network](https://www.aclweb.org/anthology/C14-1220.pdf).
 
 ## Environment Requirements
